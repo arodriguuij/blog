@@ -18,14 +18,20 @@ const ShowScreen = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+ShowScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Edit", { id: navigation.getParam("id") })
+        }
+      >
+        <Entypo name="edit" size={24} color="black" />
+      </TouchableOpacity>
+    ),
+  };
+};
 
-ShowScreen.navigationOptions = ({ navigation }) => ({
-  headerRight: () => (
-    <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
-      <Entypo name="edit" size={24} color="black" />
-    </TouchableOpacity>
-  ),
-});
+const styles = StyleSheet.create({});
 
 export default ShowScreen;
